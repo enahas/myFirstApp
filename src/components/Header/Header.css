@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+ul{list-style-type: none;}
+
+a{
+    text-decoration: none;
+    color:black
+}
+
+.logoHeader{width:180px;}
+
+.nav-item{font-weight: 600;}
+
+li{transition: all .3s;}
+li:hover {transform: scale(1.2);}
