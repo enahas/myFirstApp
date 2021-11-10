@@ -1,5 +1,6 @@
 import './Header.css'
 import logo_ATR from './logo_ATR.png'
+import CartWidget from '../CartWidget/CartWidget';
 
 const Header = () =>{
     return(
@@ -24,6 +25,7 @@ const Header = () =>{
                                 </li>
                             </ul>
                         </div>
+                        <CartWidget/>
             </nav>
         </header>
     )
