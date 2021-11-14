@@ -20,4 +20,6 @@ li:hover {transform: scale(1.2);}
 
 nav{
     margin: 0 20px;
+    display:flex;
+    justify-content:space-between;
 }
