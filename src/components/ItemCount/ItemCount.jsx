@@ -9,6 +9,9 @@ const ItemCount = (props) =>{
     if(count<=0) {
         decrementCounter = () => setCount(0);
       }
+    if(count>=props.stock) {
+        incrementCounter = () => setCount(props.stock);
+      }
     return(
         <Card className="card">
             <Card.Content>
