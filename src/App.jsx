@@ -11,7 +11,7 @@ const App = () =>{
     <Fragment>
       <Header />
       <ItemListContainer greetings="¡Te doy la bienvenida!"/>
-      <ItemCount />
+      <ItemCount stock={10} />
     </Fragment>
   )
 }
