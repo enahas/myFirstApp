@@ -1,5 +1,5 @@
 import './Header.css'
-import logo_ATR from './logo_ATR.png'
+import logo_ATR from '../Header/logo_ATR.png'
 import CartWidget from '../CartWidget/CartWidget';
 
 const Header = () =>{
