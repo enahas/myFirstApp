@@ -4,14 +4,21 @@ import { useState } from 'react';
 
 const ItemCount = (props) =>{
     const [count, setCount] = useState(0);
-    let incrementCounter = () => setCount(count + 1);
-    let decrementCounter = () => setCount(count - 1);
-    if(count<=0) {
-        decrementCounter = () => setCount(0);
-      }
-    if(count>=props.stock) {
-        incrementCounter = () => setCount(props.stock);
-      }
+    let incrementCounter = () => {
+        if(count>=props.stock) {
+            setCount(props.stock);
+        } else {
+            setCount(count + 1);
+        }
+    }
+    let decrementCounter = () => {
+        if(count<=0){
+            setCount(0);
+        } else{
+            setCount(count - 1);
+        }        
+    }
+    
     return(
         <Card className="card">
             <Card.Content>
