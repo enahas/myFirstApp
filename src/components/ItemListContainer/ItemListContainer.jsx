@@ -5,7 +5,8 @@ import { services } from '../../arrayServices'
 
 const ItemListContainer = (props) =>{
     const [items, setItems] = useState([]);
-
+//sólo se ejecuta en el primer renderizado, funciona como el component did mount
+//todas las peticiones al back van dentro de un useEffect
     useEffect(() => {      
       const getItems = new Promise((resolve) => {
         setTimeout(() => {resolve(services);}, 2000);
