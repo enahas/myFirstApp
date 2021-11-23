@@ -4,16 +4,21 @@ import { Fragment } from 'react';
 import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-// import ItemCount from './components/ItemCount/ItemCount';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Inicio from '../src/screens/Inicio/Inicio'
 
 
-const App = () =>{
+const App = (props) =>{
   return(
     <Fragment>
-      <Header />
-      {/* <ItemListContainer greetings="¡Te doy la bienvenida!"/> */}
-      {/* <ItemCount stock={10} /> */}
-      <ItemDetailContainer />
+      <BrowserRouter> 
+        <Header />
+        <Routes>
+          <Route path='/' element={<Inicio/>} />
+          <Route path='/category/:id' element={<ItemListContainer title="Coaching"/>} />
+          <Route path='/item/:id' element={<ItemDetailContainer/>} />
+        </Routes>
+      </BrowserRouter>
     </Fragment>
   )
 }

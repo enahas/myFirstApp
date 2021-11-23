@@ -16,7 +16,7 @@ a{
 .nav-item{font-weight: 600;}
 
 li{transition: all .3s;}
-li:hover {transform: scale(1.2);}
+li:hover {transform: scale(1.1);}
 
 nav{
     margin: 0 20px;

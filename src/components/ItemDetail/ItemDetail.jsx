@@ -1,21 +1,41 @@
+import { Card, Button, Icon} from 'semantic-ui-react';
+import { useState } from 'react';
+import './ItemDetail.css';
 
-const ItemDetail = ({serviciosVenta}) =>{
-    
+const ItemDetail = ({serviciosVenta}, props) =>{
+    const [count, setCount] = useState(0);
+    let incrementCounter = () => {
+        if(count>=props.stock) {
+            setCount(props.stock);
+        } else {
+            setCount(count + 1);
+        }
+    }
+    let decrementCounter = () => {
+        if(count<=0){
+            setCount(0);
+        } else{
+            setCount(count - 1);
+        }        
+    }
     return(
-        <div className="container d-md-block">
-                    <div className="row align-items-center m-5">
-                        <div className="col-lg-4 col-xs-12">
-                            <img src={serviciosVenta.img} className="logoServicios img-fluid" />
-                        </div>
-                        <div className="col-lg-8 col-xs-12">
-                            <div className="row"><h5>{serviciosVenta.name}</h5></div>
-                            <div className="row"><p>{serviciosVenta.descripcion}</p></div>
-                            <div className="row">
-                                <div className="col-auto pl-0"><button className="btn btn-outline-dark btn-compra">Agregar</button></div>
-                            </div>
-                        </div>
+        <div className="card">
+            <Card>
+                <Card.Content>
+                    <Card.Header>{serviciosVenta?.name}</Card.Header>
+                    <p>{serviciosVenta?.descripcion}</p>
+                    <h2>{count}</h2>
+                    <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
+                </Card.Content>
+                <Card.Content extra>
+                    <div className='ui two buttons'>
+                        <Button basic color='red' onClick={decrementCounter}><Icon name="minus" /></Button>
+                        <Button basic color='green' onClick={incrementCounter}><Icon name="plus" /></Button>
                     </div>
-        </div>        
+                </Card.Content>
+            </Card> 
+        </div>
+      
     )
 }
 export default ItemDetail
