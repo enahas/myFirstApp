@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-
+import { services } from '../../arrayServices';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () =>{
     const [serviciosVenta,setServiciosVenta] = useState()
+    const { itemId } = useParams();
 
-    const servicio1 = {
-        id:1,
-        name: "Coaching ontológico: sesión personal",
-        price: 5000,
-        img: "/assets/img/servicio1.jpg",
-        descripcion: "En este camino, yo te acompañaré con distintas herramientas y técnicas, siendo la más importante la pregunta, para instarte a reflexionar y que puedas descubrir fortalezas, debilidades y oportunidades encontrando por vos mismo la/s respuesta/s que te permitan transitar de tu situación actual a la situación deseada, aquella en que tu objetivo o meta se encuentra cumplido.",
-    }
-    
     const traerItem = ()=>{
         return new Promise ((resolve, reject)=>{
             setTimeout(()=>{
-                resolve(servicio1)
+                resolve(services)
             },2000)
         })
     }
     useEffect(() => {      
        traerItem()
-       .then((resp)=>setServiciosVenta(resp)) 
-      });
+       .then((resp)=>{
+        itemId && setServiciosVenta(resp.find((item) => item.id === itemId));
+       })    
+      }, [itemId]);
   
     
     return(
