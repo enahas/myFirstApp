@@ -3,29 +3,33 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { services } from '../../arrayServices';
 import { useParams } from 'react-router-dom';
 
-const ItemDetailContainer = () =>{
-    const [serviciosVenta,setServiciosVenta] = useState()
+const ItemDetailContainer = () => {
+    const [serviciosVenta, setServiciosVenta] = useState()
     const { itemId } = useParams();
+    const [isLoading, setIsLoading] = useState(true);
 
-    const traerItem = ()=>{
-        return new Promise ((resolve, reject)=>{
-            setTimeout(()=>{
+    const traerItem = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
                 resolve(services)
-            },2000)
+            }, 1000)
         })
     }
-    useEffect(() => {      
-       traerItem()
-       .then((resp)=>{
-        itemId && setServiciosVenta(resp.find((item) => item.id === itemId));
-       })    
-      }, [itemId]);
-  
-    
-    return(
+    useEffect(() => {
+        setIsLoading(true);
+        traerItem()
+            .then((resp) => {
+                itemId && setServiciosVenta(resp.find((item) => item.id === itemId));
+            }).finally(() => {
+                setIsLoading(false);
+            })
+    }, [itemId]);
+
+
+    return (isLoading ? <h1>Cargando...</h1> :
         <div>
-        <ItemDetail serviciosVenta={serviciosVenta} stock={10}/>
-    </div>        
+            <ItemDetail serviciosVenta={serviciosVenta} />
+        </div>
     )
 }
 export default ItemDetailContainer
