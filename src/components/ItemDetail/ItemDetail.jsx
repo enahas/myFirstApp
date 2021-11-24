@@ -10,6 +10,7 @@ const ItemDetail = ({serviciosVenta}, props) =>{
                 <Card.Content>
                     <Card.Header>{serviciosVenta?.name}</Card.Header>
                     <p>{serviciosVenta?.descripcion}</p>
+                    <p>{serviciosVenta?.price}</p>
                     {/* <h2>{count}</h2> */}
                     <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
                 </Card.Content>
