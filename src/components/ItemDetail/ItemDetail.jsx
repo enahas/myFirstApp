@@ -4,10 +4,9 @@ import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({serviciosVenta}) =>{
-    const [estado, setEstado] = useState(0);
-    const onAdd = (estado) => {
-        estado = 'Agregado';
-        console.log(estado)
+    const [estado, setEstado] = useState(false);
+    const onAdd = (value) => {
+        console.log("Se compraron", value , "Items")
         setEstado(true)
         
     }

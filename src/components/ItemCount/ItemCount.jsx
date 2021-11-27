@@ -2,7 +2,7 @@ import './ItemCount.css';
 import { Button, Icon} from 'semantic-ui-react';
 import { useState } from 'react';
 
-const ItemCount = ({stock , onAdd, value}) =>{
+const ItemCount = ({stock , onAdd}) =>{
     const [count, setCount] = useState(0);
     let incrementCounter = () => {
         if(count>=stock) {
@@ -29,7 +29,7 @@ const ItemCount = ({stock , onAdd, value}) =>{
                 <Button basic color='green' onClick={incrementCounter}><Icon name="plus" /></Button>
             </div>
             <div className="row align-items-center">
-                <Button onClick={() => onAdd(value)}>Agregar</Button>
+                <Button onClick={() => onAdd(count)}>Agregar</Button>
             </div>
         </div>
     )
