@@ -1,28 +1,28 @@
-import { Card, Button, Icon} from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import { useState } from 'react';
 import './ItemDetail.css';
+import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = ({serviciosVenta}, props) =>{
-    
+const ItemDetail = ({serviciosVenta}) =>{
+    const [estado, setEstado] = useState(0);
+    const onAdd = (estado) => {
+        estado = 'Agregado';
+        console.log(estado)
+        setEstado(true)
+        
+    }
     return(
-        <div className="card">
+        <div className="container d-md-block mb-5">
             <Card>
                 <Card.Content>
                     <Card.Header>{serviciosVenta?.name}</Card.Header>
                     <p>{serviciosVenta?.descripcion}</p>
                     <p>{serviciosVenta?.price}</p>
-                    {/* <h2>{count}</h2> */}
                     <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
+                    <ItemCount stock={10} onAdd={onAdd}/>
                 </Card.Content>
-                {/* <Card.Content extra>
-                    <div className='ui two buttons'>
-                        <Button basic color='red' onClick={decrementCounter}><Icon name="minus" /></Button>
-                        <Button basic color='green' onClick={incrementCounter}><Icon name="plus" /></Button>
-                    </div>
-                </Card.Content> */}
-            </Card> 
+            </Card>
         </div>
-      
     )
 }
 export default ItemDetail
