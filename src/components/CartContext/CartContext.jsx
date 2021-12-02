@@ -5,14 +5,22 @@ import ItemCount from '../ItemCount/ItemCount'
 const Context=React.createContext()
 
 export function UserContext({children}){
-    const[serviciosGuardados, setServiciosGuardados] = useState()
+    const[serviciosGuardados, setServiciosGuardados] = useState([])
 
-    useEffect(()=>{
-        guardarServicios()
-    }, [])
-
-    const guardarServicios = ({serviciosVenta, value}) => {
-        addItem(serviciosVenta?.name, value)
+    // useEffect(()=>{
+    //     guardarServicios()
+    // }, [])
+    
+    const guardarServicios = (serviciosVenta, value) => {
+        const found = serviciosGuardados.find(element => 
+            element.Nombre === serviciosVenta.name
+            // console.log(element.Nombre, serviciosVenta.name)
+        )
+        console.log(found)
+        if (!found){
+            setServiciosGuardados([...serviciosGuardados,{'Nombre':serviciosVenta.name, 'Precio':serviciosVenta.price, 'Cantidad':value}])
+        }
+        else{return}     
     }
 
     return(

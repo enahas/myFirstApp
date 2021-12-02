@@ -4,13 +4,13 @@ import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import CartContext from './components/CartContext/CartContext'
+import {UserContext} from './components/CartContext/CartContext'
 
 const App = (props) =>{
   
   return(
     <Fragment>
-      <CartContext>
+      <UserContext>
         <BrowserRouter> 
           <Header />
           <Routes>
@@ -21,7 +21,7 @@ const App = (props) =>{
             {/* <Route path='*' element={<Navigate to="/"/>}/> */}
           </Routes>
         </BrowserRouter>
-      </CartContext>
+      </UserContext>
     </Fragment>
   )
 }
