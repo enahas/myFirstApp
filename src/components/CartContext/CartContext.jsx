@@ -13,11 +13,16 @@ export function UserContext({children}){
         );
         
         if (!found){
-            setServiciosGuardados([...serviciosGuardados,{'Nombre':serviciosVenta.name, 'Precio':serviciosVenta.price, 'Cantidad':value}])
+            setServiciosGuardados([...serviciosGuardados,{'Nombre':serviciosVenta.name, 'Precio':serviciosVenta.price, 'Img':serviciosVenta.img, 'Id':serviciosVenta.id, 'Adress':serviciosVenta.adress,'Item':serviciosVenta.item, 'Category':serviciosVenta.category, 'Cantidad':value}])
         }
-        else{return}     
+        else{
+            const indexFound = serviciosGuardados.indexOf(found);
+            // console.log(serviciosGuardados[indexFound].Cantidad)
+            serviciosGuardados[indexFound].Cantidad = serviciosGuardados[indexFound].Cantidad + value;
+            setServiciosGuardados([...serviciosGuardados])
+        }
     };
-
+    
     return(
         <Context.Provider value={{ serviciosGuardados, guardarServicios }}>
             {children}
