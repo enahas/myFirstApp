@@ -4,6 +4,7 @@ import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
 import { useContext } from 'react';
 import CartContext from '../CartContext/CartContext'
+import { Button } from 'semantic-ui-react';
 
 
 const ItemDetail = ({serviciosVenta}) =>{
@@ -25,7 +26,7 @@ const ItemDetail = ({serviciosVenta}) =>{
                     <p>{serviciosVenta?.descripcion}</p>
                     <p>{serviciosVenta?.price}</p>
                     <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
-                    <ItemCount stock={10} onAdd={onAdd}/>
+                    {estado ? <Button>Terminar compra</Button> : <ItemCount stock={10} onAdd={onAdd}/>}
                 </Card.Content>
             </Card>
         </div>

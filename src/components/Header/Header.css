@@ -23,3 +23,8 @@ nav{
     display:flex;
     justify-content:space-between;
 }
+
+.hola{
+    display:flex;
+    justify-content:end;
+}

@@ -1,5 +1,4 @@
 // import logo from './logo.svg';
-import { Fragment } from 'react';
 import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
@@ -9,7 +8,6 @@ import {UserContext} from './components/CartContext/CartContext'
 const App = (props) =>{
   
   return(
-    <Fragment>
       <UserContext>
         <BrowserRouter> 
           <Header />
@@ -22,7 +20,6 @@ const App = (props) =>{
           </Routes>
         </BrowserRouter>
       </UserContext>
-    </Fragment>
   )
 }
 export default App;
