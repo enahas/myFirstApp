@@ -1,11 +1,11 @@
-//vamos a usar promesas para traernos estos productos del back
+import React from 'react';
 import Item from '../Item/Item';
 
 const ItemList = ({ items }) =>{
     return(
         <ul>
-        {items.map((item) => (
-          <Item item={item} />
+        {items?.map((item) => (
+          <Item item={item} key={item.id}/>
         ))}
       </ul>
     )

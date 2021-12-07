@@ -8,7 +8,7 @@ ul{list-style-type: none;}
 
 a{
     text-decoration: none;
-    color:black
+    color:black !important;
 }
 
 .logoHeader{width:180px;}
@@ -24,7 +24,7 @@ nav{
     justify-content:space-between;
 }
 
-.hola{
-    display:flex;
-    justify-content:end;
+.claseNav{
+    display: flex;
+    justify-content: end
 }

@@ -16,10 +16,10 @@ const Header = ({ title }) => {
                             bg-transparent">
                 <NavLink className="navbar-brand" to="/"><img src={logo_ATR} alt="logo"
                         className="logoHeader" /></NavLink>
-                <div className="collapse navbar-collapse hola" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse claseNav" id="navbarSupportedContent">
                         {categories.map((cat) => {
                             return (
-                                <div className='links' key={cat.id}>
+                                <div className='nav-link' key={cat.id}>
                                     <Link to={cat.adress}>{cat.text}</Link>
                                 </div>
                             );

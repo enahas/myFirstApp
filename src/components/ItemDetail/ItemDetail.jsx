@@ -1,32 +1,35 @@
 import { Card } from 'semantic-ui-react';
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
-import { useContext } from 'react';
-import CartContext from '../CartContext/CartContext'
-import { Button } from 'semantic-ui-react';
+import {ProductContext} from '../Context/ProductContext'
+import { Link } from 'react-router-dom';
+import { Button} from 'semantic-ui-react';
 
 
 const ItemDetail = ({serviciosVenta}) =>{
-    const [estado, setEstado] = useState(false);
-    const soyElContexto = useContext(CartContext);
-    const onAdd = (value) => {
-        console.log("Se compraron", value , "Items")
-        setEstado(true)
-        // guardarServicios(serviciosVenta, value)
-        soyElContexto.guardarServicios(serviciosVenta, value)
-    }
-    
-    console.log(soyElContexto)
+    const [purchased, setPurchased] = useState(false);
+    const { onAdd } = useContext(ProductContext);
+    const addItem = (count) => {
+        if (count > 0) {
+        onAdd({ serviciosVenta }, count);
+        setPurchased(true);
+        } else {
+        alert('La cantidad debe ser mayor a cero');
+        }
+    };
+
     return(
         <div className="container d-md-block mb-5">
             <Card>
                 <Card.Content>
                     <Card.Header>{serviciosVenta?.name}</Card.Header>
+                    <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
                     <p>{serviciosVenta?.descripcion}</p>
                     <p>{serviciosVenta?.price}</p>
-                    <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
-                    {estado ? <Button>Terminar compra</Button> : <ItemCount stock={10} onAdd={onAdd}/>}
+                    <p>Stock disponible: {serviciosVenta?.stock}</p>
+                    {!purchased ? (<ItemCount stock={serviciosVenta?.stock} initial={1} addItem={addItem} />) 
+                    : (<Button><Link to="/cart">Terminar compra</Link></Button>)}
                 </Card.Content>
             </Card>
         </div>

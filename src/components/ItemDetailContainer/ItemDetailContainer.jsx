@@ -24,9 +24,7 @@ const ItemDetailContainer = () => {
                 setIsLoading(false);
             })
     }, [itemId]);
-    //El filter de un array devuelve un array, el find un elemento
-
-
+    
     return (isLoading ? <h1>Cargando...</h1> :
         <div>
             <ItemDetail serviciosVenta={serviciosVenta} />
