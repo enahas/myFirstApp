@@ -9,35 +9,36 @@ const CartFuncion = ({ children }) => {
   
     const onAdd = (producto, cantidad) => {
       const itemExiste = cart.find((item) => item.id === producto.id);
+      console.log(producto.price)
       if (!itemExiste) {
         setCart([
           ...cart,
           {
             ...producto,
             cantidad: cantidad,
-            subtotal: producto.price * cantidad,
+            subtotal: producto.serviciosVenta.price * cantidad,
           },
         ]);
-        setTotal(total + producto.price * cantidad);
+        setTotal(total + producto.serviciosVenta.price * cantidad);
   
         setUnidades(unidades + cantidad);
       } else {
         const cartAux = cart.map((item) => {
-          if (item.id === producto.id) {
+          if (item.id === producto.serviciosVenta.id) {
             item.cantidad += cantidad;
-            item.subtotal += producto.price * cantidad;
+            item.subtotal += producto.serviciosVenta.price * cantidad;
           }
           return item;
         });
         setCart(cartAux);
-        setTotal(total + producto.price * cantidad);
+        setTotal(total + producto.serviciosVenta.price * cantidad);
         setUnidades(unidades + cantidad);
       }
     };
 
     const onRemove = (id) => {
-      const myItem = cart.find((item) => item.id === id);
-      const cartAux = cart.filter((item) => item.id !== id);
+      const myItem = cart.find((item) => item.serviciosVenta.id === id);
+      const cartAux = cart.filter((item) => item.serviciosVenta.id !== id);
       setCart(cartAux);
       setUnidades(unidades - myItem.cantidad);
       setTotal(total - myItem.subtotal);

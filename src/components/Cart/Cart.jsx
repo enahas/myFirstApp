@@ -10,15 +10,14 @@ export const Cart = () => {
       <>
         <h1>ITEMS</h1>
         {cart.map((item) => {
-            console.log(item)
           return (
-            <article key={item.id}>
-              <h2>{item.name}</h2>
-              <img src={item.img} alt={item.name} height="50px" />
-              <p>Precio individual: ${item.price}</p>
+            <article key={item.serviciosVenta.id}>
+              <h2>{item.serviciosVenta.name}</h2>
+              <img src={item.serviciosVenta.img} alt={item.serviciosVenta.name} height="50px" />
+              <p>Precio individual: ${item.serviciosVenta.price}</p>
               <p>Cantidad: {item.cantidad} items</p>
-              <p>Subtotal: ${item.subtotal}</p>
-              <Button onClick={() => onRemove(item.id)}>ELIMINAR ITEM</Button>
+              <p>Subtotal: ${item.serviciosVenta.subtotal}</p>
+              <Button onClick={() => onRemove(item.serviciosVenta.id)}>ELIMINAR ITEM</Button>
             </article>
           );
         })}
