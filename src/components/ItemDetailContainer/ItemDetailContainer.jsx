@@ -13,16 +13,14 @@ const ItemDetailContainer = () => {
     useEffect(()=>{
         const myItem = doc(db, 'services', itemId);
         getDoc(myItem)
-            .then((snapShot) => {
-                if(snapShot.exists()){
-                    console.log(snapShot.data())
-                }
+            .then((res) => {
+                    const result = { id: res.id, ...res.data() };
+                    setServiciosVenta(result);
             })
             .finally(() => {
                 setIsLoading(false);
-              });
+            });
     },[])
-
 
 
     // const traerItem = () => {

@@ -15,13 +15,18 @@ const ItemListContainer = ({greetings}) =>{
     useEffect(()=>{
       const ref = collection(db, 'services');
       getDocs(ref)
-          .then((snapShot) => {
-              snapShot.docs.map((doc) => console.log(doc.data()))
-          })
+          .then((res) => {
+              const results = res.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id };
+              });
+        
+              setItems(results);
+            })
           .finally(() => {
             setLoader(false);
           })
     },[catId])
+
     // useEffect(() => {      
     //   setLoader(true);
     //   const getItems = new Promise((resolve) => {
