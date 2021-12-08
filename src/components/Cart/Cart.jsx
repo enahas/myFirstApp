@@ -16,7 +16,7 @@ export const Cart = () => {
               <img src={item.serviciosVenta.img} alt={item.serviciosVenta.name} height="50px" />
               <p>Precio individual: ${item.serviciosVenta.price}</p>
               <p>Cantidad: {item.cantidad} items</p>
-              <p>Subtotal: ${item.serviciosVenta.subtotal}</p>
+              <p>Subtotal: ${item.subtotal}</p>
               <Button onClick={() => onRemove(item.serviciosVenta.id)}>ELIMINAR ITEM</Button>
             </article>
           );
