@@ -44,3 +44,14 @@ export const services = [
         stock: 5,
     }
 ]
+
+// const {
+//         id,
+//         name,
+//         price,
+//         img,
+//         category,
+//         descripcion,
+//         stock,
+
+// } = service

@@ -10,7 +10,6 @@ const App = (props) =>{
   
   return(
     <CartFuncion>
-      
         <BrowserRouter> 
           <Header />
           <Routes>
@@ -22,7 +21,6 @@ const App = (props) =>{
             {/* <Route path='*' element={<Navigate to="/"/>}/> */}
           </Routes>
         </BrowserRouter>
-
     </CartFuncion>
   )
 }
