@@ -15,16 +15,23 @@ const Header = ({ title }) => {
             <nav className="navbar navbar-expand-lg navbar-light
                             bg-transparent">
                 <NavLink className="navbar-brand" to="/"><img src={logo_ATR} alt="logo"
-                        className="logoHeader" /></NavLink>
+                    className="logoHeader" /></NavLink>
                 <div className="collapse navbar-collapse claseNav" id="navbarSupportedContent">
-                        {categories.map((cat) => {
-                            return (
-                                <div className='nav-link' key={cat.id}>
-                                    <Link to={cat.adress}>{cat.text}</Link>
-                                </div>
-                            );
-                        })
-                        }
+                    {categories.map((cat) => {
+                        return (
+                            <div className='nav-link' key={cat.id}>
+                                <NavLink
+                                    to={cat.adress}
+                                    className={({ isActive }) => {
+                                        return isActive ? 'activeClass' : '';
+                                    }}
+                                >
+                                    {cat.text}
+                                </NavLink>
+                            </div>
+                        );
+                    })
+                    }
                 </div>
                 <button class="navbar-toggler" type="button"
                     data-toggle="collapse"

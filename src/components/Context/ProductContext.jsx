@@ -8,8 +8,8 @@ const CartFuncion = ({ children }) => {
     const [total, setTotal] = useState(0);
   
     const onAdd = (producto, cantidad) => {
-      const itemExiste = cart.find((item) => item.id === producto.id);
-      console.log(producto.price)
+      const itemExiste = cart.find((item) => item.id === producto.serviciosVenta.id);
+      // console.log(producto.price)
       if (!itemExiste) {
         setCart([
           ...cart,

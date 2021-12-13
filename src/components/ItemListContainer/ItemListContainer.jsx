@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { services } from '../../arrayServices'
 import { useParams } from 'react-router-dom';
 import db from '../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const ItemListContainer = ({greetings}) =>{
     const [items, setItems] = useState([]);
@@ -13,7 +13,10 @@ const ItemListContainer = ({greetings}) =>{
 //todas las peticiones al back van dentro de un useEffect
     const { catId } = useParams();
     useEffect(()=>{
-      const ref = collection(db, 'services');
+      const ref = catId
+      ? query(collection(db, 'services'), where('category', '==', catId))
+      : collection(db, 'services');
+      // const ref = collection(db, 'services');
       getDocs(ref)
           .then((res) => {
               const results = res.docs.map((doc) => {
