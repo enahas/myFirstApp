@@ -12,36 +12,43 @@ const CartFuncion = ({ children }) => {
     const db = getFirestore()
     const ref = collection(db, 'services')
     const refCart = collection(db, 'cartItems')
+    const [countUnidades, setCountUnidades] = useState([])
 
     useEffect(() => {
+      
       getDocs(ref)
       .then((snapShot) => {
-        setUnidades(snapShot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+        setCountUnidades(snapShot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
         // snapShot.docs.map((service) => setUnidades(prev=>([...prev, service.data()])))
         setIsLoading(false)
       })
 
-      getDocs(refCart)
-      .then((snapShot) => {
-        setCart(snapShot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
-        setIsLoading(false)
-      })
     }, [])
 
-    const getCardItems = () => {
+    useEffect(() => {
+      // console.log(JSON.stringify(unidades))
       getDocs(refCart)
       .then((snapShot) => {
-        setCart(snapShot.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+        // console.log(snapShot)
+        setCart(snapShot.docs.map((doc) => ({...doc.data()})))
+        countUnidades.forEach((item)=>{
+          setUnidades(unidades+item.count)
+        })
+
+        // console.log(unidades)
         setIsLoading(false)
       })
-    }
+    }, [unidades])
+
 
     const onAdd = (producto, cantidad) => {
-      const itemExiste = cart.find((item) => item.serviciosVenta.id === producto.serviciosVenta.id);
+      // cart.forEach((item)=> {
+      //   console.log(item)
+      // })
+      const itemExiste = cart.find((item) => item.id === producto.serviciosVenta.id);
       // console.log(producto.serviciosVenta.id)
       if (!itemExiste) {
         addDoc(refCart, producto.serviciosVenta)
-        getCardItems()
         // setCart([
         //   ...cart,
         //   {
@@ -55,7 +62,7 @@ const CartFuncion = ({ children }) => {
         // setUnidades(unidades + cantidad);
       } else {
         const cartAux = cart.map((item) => {
-          if (item.serviciosVenta.id === producto.serviciosVenta.id) {
+          if (item.id === producto.serviciosVenta.id) {
             item.cantidad += cantidad;
             item.subtotal += producto.serviciosVenta.price * cantidad;
           }
@@ -68,8 +75,8 @@ const CartFuncion = ({ children }) => {
     };
 
     const onRemove = (id) => {
-      const myItem = cart.find((item) => item.serviciosVenta.id === id);
-      const cartAux = cart.filter((item) => item.serviciosVenta.id !== id);
+      const myItem = cart.find((item) => item.id === id);
+      const cartAux = cart.filter((item) => item.id !== id);
       setCart(cartAux);
       setUnidades(unidades - myItem.cantidad);
       setTotal(total - myItem.subtotal);
