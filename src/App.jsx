@@ -5,6 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { CartFuncion } from './components/Context/ProductContext'
 import {Cart} from './components/Cart/Cart'
+import Cartview from './components/CartView/Cartview'
 
 const App = (props) =>{
   
@@ -20,6 +21,7 @@ const App = (props) =>{
             <Route path='*' element={<h1>404 NOT FOUND</h1>}/>
             {/* <Route path='*' element={<Navigate to="/"/>}/> */}
           </Routes>
+          <Cartview />
         </BrowserRouter>
     </CartFuncion>
   )
