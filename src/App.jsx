@@ -5,7 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { CartFuncion } from './components/Context/ProductContext'
 import {Cart} from './components/Cart/Cart'
-import CartView from './components/CartView/Cartview';
+import CartView from './components/Cartview/Cartview';
 
 const App = (props) =>{
   

@@ -43,9 +43,15 @@ const CartFuncion = ({ children }) => {
       setUnidades(unidades - myItem.cantidad);
       setTotal(total - myItem.subtotal);
     };
+
+    const clearCart = (id) => {
+      setCart([]);
+      setUnidades(0);
+      setTotal(0);
+    };
   
     return (
-      <ProductContext.Provider value={{ cart, unidades, total, onAdd, onRemove }}>
+      <ProductContext.Provider value={{ cart, unidades, total, onAdd, onRemove, clearCart }}>
         {children}
       </ProductContext.Provider>
     );
