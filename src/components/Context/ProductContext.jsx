@@ -44,7 +44,7 @@ const CartFuncion = ({ children }) => {
       setTotal(total - myItem.subtotal);
     };
 
-    const clearCart = (id) => {
+    const clearCart = () => {
       setCart([]);
       setUnidades(0);
       setTotal(0);
