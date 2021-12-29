@@ -42,6 +42,10 @@ Uso de React Router Dom para la navegación.
 Uso de FireBase para persistencia de datos.
 
 
+## Aplicación en funcionamiento
+
+https://github.com/enahas/myFirstApp/blob/Firebase/atr_en_funcionamiento.gif
+
 
 ### Autora
 
