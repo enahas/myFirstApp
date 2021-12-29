@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import { services } from '../../arrayServices';
 import { useParams } from 'react-router-dom';
 import db from '../../firebase';
 import { doc, getDoc } from 'firebase/firestore';

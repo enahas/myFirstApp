@@ -1,8 +1,7 @@
 import './Header.css'
 import logo_ATR from '../Header/logo_ATR.png'
 import CartWidget from '../CartWidget/CartWidget';
-import { NavLink, Link } from 'react-router-dom';
-import { services } from '../../arrayServices'
+import { NavLink } from 'react-router-dom';
 
 const Header = ({ title }) => {
     const categories = [

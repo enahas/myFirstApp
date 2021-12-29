@@ -24,7 +24,7 @@ const ItemDetail = ({serviciosVenta}) =>{
             <Card>
                 <Card.Content>
                     <Card.Header>{serviciosVenta?.name}</Card.Header>
-                    <img src={serviciosVenta?.img} className="logoServicios img-fluid" />
+                    <img src={serviciosVenta?.img} alt="servicio" className="logoServicios img-fluid" />
                     <p>{serviciosVenta?.descripcion}</p>
                     <p>{serviciosVenta?.price}</p>
                     <p>Stock disponible: {serviciosVenta?.stock}</p>
